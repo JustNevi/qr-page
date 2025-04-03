@@ -19,6 +19,7 @@ if (not os.path.isabs(LOCAL_SETTINGS_PATH)):
 
 include(
     "base.py",
+    "logging.py",
     # If path corrects and file exists, it overwrites settings variables
     optional(LOCAL_SETTINGS_PATH)
 )
