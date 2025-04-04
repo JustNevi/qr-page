@@ -24,4 +24,4 @@ def visit(request, qr_id):
     # Get requested page from json and convert to dataclass
     page = VisitPage(**pages[str(qr_id)])
 
-    return HttpResponse(str(page))
+    return render(request, "template1.html", {"title": page.title, "image_url":page.image_url, "redirect_buttons":page.redirect_buttons})
