@@ -7,5 +7,5 @@
 Using make file:
 
 ```bash
-   make temp_to_local_dev_settings:
+   make temp_to_local_dev_settings
 ```
