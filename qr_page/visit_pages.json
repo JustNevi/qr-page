@@ -7,6 +7,16 @@
                 "redirect_url": "REDIRECT_URL",
                 "text": "TEXT",
                 "icon_url": "ICON_URL"
+            },
+            { 
+                "redirect_url": "REDIRECT_URL",
+                "text": "TEXT",
+                "icon_url": "ICON_URL"
+            },
+            { 
+                "redirect_url": "REDIRECT_URL",
+                "text": "TEXT",
+                "icon_url": "ICON_URL"
             }
         ]
     }
