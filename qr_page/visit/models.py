@@ -13,7 +13,7 @@ class RedirectButton:
 class VisitPage:
     image_url: str
     title: str
-    url_buttons: List[RedirectButton]
+    redirect_buttons: List[RedirectButton]
 
     def __post_init__(self):
-        self.url_buttons = [RedirectButton(**url_button) for url_button in self.url_buttons]
+        self.redirect_buttons = [RedirectButton(**redirect_button) for redirect_button in self.redirect_buttons]
