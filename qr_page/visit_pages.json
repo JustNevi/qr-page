@@ -1,0 +1,13 @@
+{
+    "1": {
+       "image_url": "IMAGE_URL",
+        "title": "TITLE",
+        "url_buttons": [
+            { 
+                "redirect_url": "REDIRECT_URL",
+                "text": "TEXT",
+                "icon_url": "ICON_URL"
+            }
+        ]
+    }
+}
