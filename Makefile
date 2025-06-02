@@ -10,10 +10,10 @@ temp_to_local_dev_settings:
 	cp qr_page/qr_page/settings/templates/settings.dev.py local/settings.dev.py
 
 migrate:
-	python ${manage} migrate
+	python3 ${manage} migrate
 
 makemigrations:
-	python ${manage} makemigrations 
+	python3 ${manage} makemigrations 
 
 runserver:
-	python ${manage} runserver
+	python3 ${manage} runserver
