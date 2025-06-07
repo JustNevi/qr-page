@@ -1,5 +1,3 @@
-import json
-
 DEBUG = False
 SECRET_KEY = os.getenv(f"{ENV_VARS_SETTINGS_PREFIX}SECRET_KEY")
 
