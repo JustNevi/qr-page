@@ -32,11 +32,16 @@ const ErrorScreen: React.FC<{ message: string; onRetry: () => void }> = ({
 );
 
 function QRPage() {
+  // @ts-ignore
+  const apiUrl = window._env_ // @ts-ignore
+    ? window._env_.VITE_API_URL
+    : import.meta.env.VITE_API_URL;
+
   // Extract ID from current URL path
   const getCurrentId = () => {
     const path = window.location.pathname;
     const segments = path.split("/").filter((segment) => segment !== "");
-    return segments[segments.length - 1] || ""; // Default to '1' if no ID found
+    return segments[segments.length - 1] || "";
   };
 
   const [currentId, setCurrentId] = useState(getCurrentId());
@@ -49,7 +54,7 @@ function QRPage() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}${pageId}`);
+      const response = await fetch(`${apiUrl}${pageId}`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
