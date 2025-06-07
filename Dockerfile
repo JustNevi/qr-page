@@ -16,4 +16,4 @@ COPY local/settings.prod.py local/settings.prod.py
 
 EXPOSE 8000
 
-CMD python3 ./qr_page/manage.py runserver
+CMD ["python3", "./qr_page/manage.py", "runserver", "0.0.0.0:8000"]
