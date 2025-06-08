@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: qr-django-config 
+  namespace: development
+data:
+  QRPAGE_SETTINGS_LOCAL_SETTINGS_PATH: local/settings.prod.py
+  QRPAGE_SETTINGS_DATABASE_PORT: "3306"

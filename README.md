@@ -1,0 +1,71 @@
+# Deploy
+
+## Development
+
+### Minikube
+
+#### Create namespace
+
+`kubectl create namespace development`
+
+#### Clone project
+
+```
+git clone -b main https://github.com/JustNevi/qr-page.git back
+git clone -b front https://github.com/JustNevi/qr-page.git front
+git clone -b k8s https://github.com/JustNevi/qr-page.git k8s
+```
+
+#### Build docker images
+
+Backend Django:
+
+```
+cd back
+docker build -t qr-django .
+minikube image load qr-django
+cd ..
+```
+
+Frontend React:
+
+```
+cd front
+docker build -t qr-react .
+minikube image load qr-react
+cd ..
+```
+
+#### Configure your sercrets
+
+Create *-secrets
+```
+cd k8s
+touch mysql-secret.yaml
+touch qr-django-secret.yaml
+touch qr-react-secret.yaml
+```
+and configre them.
+
+#### Run all components
+
+In k8s directory run:
+
+```
+# Mysql
+kubectl apply -f mysql-config.yaml
+kubectl apply -f mysql-secret.yaml
+kubectl apply -f mysql.yaml
+```
+```
+# Django 
+kubectl apply -f qr-django-config.yaml
+kubectl apply -f qr-django-secret.yaml
+kubectl apply -f qr-django.yaml
+```
+```
+# React 
+kubectl apply -f qr-react-config.yaml
+kubectl apply -f qr-react-secret.yaml
+kubectl apply -f qr-react.yaml
+```
