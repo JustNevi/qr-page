@@ -38,16 +38,34 @@ cd ..
 
 #### Configure your sercrets
 
-Create *-secrets
+Create \*-secrets
+
 ```
 cd k8s
 touch mysql-secret.yaml
 touch qr-django-secret.yaml
 touch qr-react-secret.yaml
 ```
+
 and configre them.
 
-#### Run all components
+#### Configure Caddy Ingress Controller
+
+1. Enable Minikube Ingress Addon
+
+```bash
+minikube addons enable ingress
+```
+
+2. Install Helm
+
+   To install Caddy you need [Helm](https://helm.sh/). Installation guide for Helm [here](https://helm.sh/docs/intro/install/).
+
+3. Install Caddy
+
+   Than you need install [Caddy](https://github.com/caddyserver/ingress).
+
+#### Apply all components
 
 In k8s directory run:
 
@@ -57,14 +75,27 @@ kubectl apply -f mysql-config.yaml
 kubectl apply -f mysql-secret.yaml
 kubectl apply -f mysql.yaml
 ```
+
 ```
-# Django 
+# Django
 kubectl apply -f qr-django-config.yaml
 kubectl apply -f qr-django-secret.yaml
 kubectl apply -f qr-django.yaml
 ```
+
 ```
-# React 
+# React
 kubectl apply -f qr-react-secret.yaml
 kubectl apply -f qr-react.yaml
+```
+
+```
+# Ingress
+kubectl apply -f ingress.yaml
+```
+
+or
+
+```
+make apply_all
 ```
