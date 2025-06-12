@@ -99,3 +99,25 @@ or
 ```
 make apply_all
 ```
+
+#### Connect
+
+You'll need to configure your `/etc/hosts` file to resolve the application hostnames.
+
+Get minikube ip:
+
+```bash
+minikube ip
+#192.168.49.2
+```
+
+```bash
+sudo vim /etc/hosts # or your preferred editor
+```
+
+Add the following line (replace the IP with your Minikube IP):
+
+```
+192.168.49.2  django.qr-page.local
+192.168.49.2  react.qr-page.local
+```
