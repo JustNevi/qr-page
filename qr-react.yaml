@@ -37,11 +37,9 @@ metadata:
   labels:
     app: qr-react
 spec:
-  type: NodePort 
   selector:
     app: qr-react
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30080

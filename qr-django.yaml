@@ -75,11 +75,9 @@ metadata:
   name: qr-django-service
   namespace: development
 spec:
-  type: NodePort
   selector:
     app: qr-django 
   ports:
     - protocol: TCP
       port: 8000 
       targetPort: 8000 
-      nodePort: 31111
