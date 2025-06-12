@@ -58,4 +58,4 @@ EXPOSE 8000
 
 ENTRYPOINT ["/opt/qr_page/entrypoint.prod.sh"]
 
-CMD ["python3", "-m", "gunicorn", "--bind 0.0.0.0:8000", "--workers", "3", "qr_page.qr_page.wsgi:application"]
+CMD ["gunicorn", "--chdir=/opt/qr_page/qr_page", "--bind=0.0.0.0:8000", "--workers=3", "qr_page.wsgi:application"]
