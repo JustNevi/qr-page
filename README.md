@@ -65,7 +65,6 @@ kubectl apply -f qr-django.yaml
 ```
 ```
 # React 
-kubectl apply -f qr-react-config.yaml
 kubectl apply -f qr-react-secret.yaml
 kubectl apply -f qr-react.yaml
 ```
