@@ -1,5 +1,5 @@
 .PHONY: apply_mysql apply_django apply_react apply_ingress apply_all
-
+	
 apply_mysql:
 	echo "Applying config, secret, deployment for mysql"
 	kubectl apply -f mysql-config.yaml
@@ -34,6 +34,9 @@ apply_all:
 	$(MAKE) apply_react
 	sleep 5 # Wait for 5 seconds after React
 	$(MAKE) apply_ingress
+
+
+.PHONY: delete_mysql delete_django delete_react delete_ingress delete_all
 
 delete_mysql:
 	echo "Deleting config, secret, deployment for mysql"
