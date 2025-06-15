@@ -43,6 +43,7 @@ Create \*-secrets
 ```
 cd k8s
 touch mysql-secret.yaml
+touch minio-secret.yaml
 touch qr-django-secret.yaml
 touch qr-react-secret.yaml
 ```
@@ -74,6 +75,12 @@ In k8s directory run:
 kubectl apply -f mysql-config.yaml
 kubectl apply -f mysql-secret.yaml
 kubectl apply -f mysql.yaml
+```
+
+```
+# MinIO
+kubectl apply -f minio-secret.yaml
+kubectl apply -f minio-dev.yaml
 ```
 
 ```
