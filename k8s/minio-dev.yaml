@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: minio
+  name: minio
+  namespace: minio-dev
+spec:
+  containers:
+  - name: minio
+    image: quay.io/minio/minio:latest
+    command:
+    - /bin/bash
+    - -c
+    args: 
+    - minio server /data --console-address :9090
+    env:
+    - name: MINIO_ROOT_USER
+      valueFrom:
+        secretKeyRef:
+          name: minio-secret
+          key: MINIO_ACCESS_KEY
+    - name: MINIO_ROOT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: minio-secret
+          key: MINIO_SECRET_KEY
+    volumeMounts:
+    - mountPath: /data
+      name: localvolume
+  nodeSelector:
+    kubernetes.io/hostname: minikube
+  volumes:
+  - name: localvolume
+    hostPath:
+      path: /mnt/disk1/data # Specify a path to a local drive or volume on the Kubernetes worker node
+      type: DirectoryOrCreate # The path to the last directory must exist
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+  namespace: minio-dev
+spec:
+  selector:
+    app: minio
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000    # MinIO's default S3 API port
+      name: api
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090    # MinIO's default Console port
+      name: console 

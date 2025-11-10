@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-react-deployment
+  namespace: development
+  labels:
+    app: qr-react
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: qr-react
+  template:
+    metadata:
+      labels:
+        app: qr-react
+    spec:
+      containers:
+      - name: qr-react
+        image: qr-react:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+          - name: VITE_API_URL
+            valueFrom:
+              secretKeyRef:
+                name: qr-react-secret
+                key: VITE_API_URL 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qr-react-service
+  namespace: development
+  labels:
+    app: qr-react
+spec:
+  selector:
+    app: qr-react
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
